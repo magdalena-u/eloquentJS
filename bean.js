@@ -1,13 +1,11 @@
-const countBs = (string) => {
-    return countChar(string, "B")
-}
+const countBs = string => countChar(string, 'B');
 
-let countChar = (string, char) => {
+const countChar = (string, char) => {
     let count = 0;
     for (let i = 0; i < string.length; i++) {
         if (string[i] === char) {
-            count++
+            count++;
         }
     }
-    return count
-}
+    return count;
+};
