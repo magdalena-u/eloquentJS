@@ -1,19 +1,15 @@
 const dominantDirection = word => {
-    let tab = [];
-    let rlt = 0;
+    let rtl = 0;
     let ltr = 0;
 
-    const code = word.split('').map((item) => item.codePointAt());
-    tab.push(code);
+    const arr = word.split('').map(item => item.codePointAt());
 
     for (let script of SCRIPTS) {
-        tab.map(item => {
-            if (script.ranges.some(([from, to]) => {
-                    return (item >= from && item < to)
-                })) {
-                script.direction === "rlt" ? rlt++ : ltr++
+        arr.forEach(item => {
+            if (script.ranges.some(([from, to]) => item >= from && item <= to)) {
+                script.direction === 'rtl' ? rtl++ : ltr++;
             }
-        })
+        });
     }
-    rlt > ltr ? rlt : ltr
-}
+    return rtl > ltr ? 'rtl' : 'ltr';
+};
