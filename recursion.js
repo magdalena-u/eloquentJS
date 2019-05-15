@@ -1,7 +1,1 @@
-const isEven = (number) => {
-    if (number === 1) {
-        return false
-    } else if (number === 0) {
-        return true
-    } else return isEven(number - 2)
-}
+const isEven = (number) => (number % 2 === 0) ? true : false
