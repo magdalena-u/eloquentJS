@@ -1,5 +1,5 @@
 const loopTriangle = () => {
-for (let i = '#'; i.length<=7; i += '#'){
-    console.log(i)
-}
+    for (let line = '#'; line.length <= 7; line += '#') {
+        console.log(line);
+    }
 }
