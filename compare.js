@@ -1,8 +1,18 @@
-const deepEqual = (value1, value2) => {
-    if (typeof (value1) === typeof (value2)) {
-        if (typeof (value1 === "object")) {
-            (JSON.stringify(Object.keys(value1)) === JSON.stringify((Object.keys(value2))) ? true : false)
+const deepEqual = (a, b) => {
+    if (a === b) return true;
+
+    if (typeof a === 'object' && typeof b === 'object') {
+        if (Object.keys(a).length !== Object.keys(b).length) {
+            return false;
         }
-        return value1 === value2 ? true : false
-    } else return false
-}
+    }
+    if (Object.keys(a).every(item => !Object.keys(b).includes(item))) {
+        return false;
+    }
+    for (let key in a) {
+        if (!(key in b)) return false;
+        if (!deepEqual(a[key], b[key])) return false;
+    }
+
+    return true;
+};
