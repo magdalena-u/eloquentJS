@@ -5,4 +5,4 @@ const everyLoop = (array, test) => {
     return true
 }
 
-const every = (array, test) => !array.some(value => (!test(value)))
+const every = (array, test) => !array.some(value => !test(value))
