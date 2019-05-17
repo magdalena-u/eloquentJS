@@ -1,7 +1,7 @@
-/* function loop that provides a for loop statment
-It takes a value, a test function, an update function, and a body
-function.*/
+const test = n => n > 0;
+const update = n => n - 1;
 
+// function loop that works as for loop statment, but use recursion instead
 const loop = (currentValue, test, update, body) => {
     if (test(currentValue)) {
         body(currentValue);
@@ -10,4 +10,4 @@ const loop = (currentValue, test, update, body) => {
     }
 };
 
-loop(3, n => n > 0, n => n - 1, console.log);
+loop(3, test, update, console.log);
