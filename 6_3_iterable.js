@@ -4,12 +4,11 @@ class Group {
     }
 
     static from(array) {
-        let group = new Group(array);
-        return group;
+        return new Group(array);
     }
 
     add(value) {
-        this.array.includes(value) || this.array.push(value);
+        !this.array.includes(value) && this.array.push(value);
         return value;
     }
 
@@ -29,12 +28,13 @@ class Group {
 
 class GroupIterator {
     constructor(cluster) {
-        (this.cluster = cluster), (this.position = 0);
+        this.cluster = cluster;
+        this.position = 0;
     }
     next() {
         if (this.position < this.cluster.array.length) {
-            let result = { done: false, value: this.cluster.array[this.position] };
-            this.position++;
+            const result = { done: false, value: this.cluster.array[this.position] };
+            this.position += 1;
             return result;
         } else {
             return { done: true };
