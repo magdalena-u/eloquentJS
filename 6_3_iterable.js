@@ -8,13 +8,17 @@ class Group {
     }
 
     add(value) {
-        !this.array.includes(value) && this.array.push(value);
-        return value;
+        if (!this.array.includes(value) && this.array.push(value)) {
+            return true;
+        }
+        return console.log(`${value} is incorrect value`);
     }
 
     delete(value) {
-        this.array.includes(value) && this.array.splice(this.array.indexOf(value), 1);
-        return value;
+        if (this.array.includes(value) && this.array.splice(this.array.indexOf(value), 1)) {
+            return true;
+        }
+        return console.log(`${value} is incorrect value`);
     }
 
     has(value) {
@@ -27,18 +31,18 @@ class Group {
 }
 
 class GroupIterator {
+    position = 0;
     constructor(cluster) {
         this.cluster = cluster;
-        this.position = 0;
     }
+
     next() {
         if (this.position < this.cluster.array.length) {
             const result = { done: false, value: this.cluster.array[this.position] };
             this.position += 1;
             return result;
-        } else {
-            return { done: true };
         }
+        return { done: true };
     }
 }
 
