@@ -13,12 +13,10 @@ function primitiveMultiply(a, b) {
 //Solution
 
 function reliableMultiply(a, b) {
-    for (;;) {
-        try {
-            return primitiveMultiply(a, b);
-        } catch (er) {
-            if (!(er instanceof MultiplicatorUnitFailure)) throw er;
-        }
+    try {
+        return primitiveMultiply(a, b);
+    } catch (er) {
+        throw reliableMultiply(a, b);
     }
 }
 
