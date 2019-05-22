@@ -17,19 +17,19 @@ const box = {
 
 //Solution
 
-function withBoxUnlocked(value) {
+withBoxUnlocked = callback => {
     if (!box.locked) {
-        value();
+        callback();
     }
     box.unlock();
     try {
-        value();
+        callback();
     } catch (er) {
         throw er;
     } finally {
         box.lock();
     }
-}
+};
 
 //Test
 
