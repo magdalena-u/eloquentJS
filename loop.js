@@ -1,6 +1,5 @@
-const loopTriangle = () => {
-    const lengthValue = 7;
-    for (let line = '#'; line.length <= lengthValue; line += '#') {
+const loopTriangle = length => {
+    for (let line = '#'; line.length <= length; line += '#') {
         console.log(line);
     }
 };
