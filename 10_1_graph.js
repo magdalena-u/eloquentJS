@@ -1,13 +1,16 @@
 export function buildGraph(edges) {
-    let graph = Object.create(null);
-    edges.map(edge => {
+    const graph = Object.create(null);
+
+    edges.forEach(edge => {
         addEdge(graph, edge);
     });
+
     return graph;
 }
 
 function addEdge(graph, edge) {
     const [from, to] = edge;
+
     if (graph[from] == null) {
         graph[from] = [to];
     } else {
