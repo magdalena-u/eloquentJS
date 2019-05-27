@@ -1,17 +1,12 @@
 function byTagName(node, tagName) {
-    const array = [];
     const elements = node.querySelectorAll(tagName);
-    elements.forEach(element => {
-        element.nodeName.toLowerCase();
-        array.push(element);
-    });
-    return array;
+    return [...elements].map(el => el.nodeName.toLowerCase());
 }
 
 console.log(byTagName(document.body, 'h1').length);
 // → 1
 console.log(byTagName(document.body, 'span').length);
-// → 3
+// // → 3
 let para = document.querySelector('p');
 console.log(byTagName(para, 'span').length);
-// → 2
+// // → 2
