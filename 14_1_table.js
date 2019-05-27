@@ -10,13 +10,13 @@ const MOUNTAINS = [
 
 const div = document.getElementById('mountains');
 const table = document.createElement('table');
+const tableTitle = Object.keys(MOUNTAINS[0]);
 
 div.appendChild(table);
-table.innerHTML += `<tr>
-<th>${Object.keys(MOUNTAINS[0])[0]}</th>
-<th>${Object.keys(MOUNTAINS[0])[1]}</th>
-<th>${Object.keys(MOUNTAINS[0])[2]}</th>
-</tr>`;
+
+tableTitle.forEach(title => {
+    table.innerHTML += `<tr><th>${title}</th></tr>`;
+});
 
 MOUNTAINS.forEach(mountain => {
     table.innerHTML += `<tr>
