@@ -7,6 +7,6 @@ console.log(byTagName(document.body, 'h1').length);
 // → 1
 console.log(byTagName(document.body, 'span').length);
 // // → 3
-let para = document.querySelector('p');
-console.log(byTagName(para, 'span').length);
+let paragraph = document.querySelector('p');
+console.log(byTagName(paragraph, 'span').length);
 // // → 2
