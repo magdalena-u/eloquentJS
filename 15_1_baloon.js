@@ -19,7 +19,7 @@ const pump = event => {
         minimize();
     }
 
-    if (baloon.style.fontSize === 250 + 'px') {
+    if (baloon.style.fontSize === '250px') {
         boom();
     }
 };
@@ -27,15 +27,15 @@ const pump = event => {
 const maximize = () => {
     size += 10;
     level += 10;
-    baloon.style.fontSize = size + 'px';
-    measure.style.left = level + 'px';
+    baloon.style.fontSize = `${size}px`;
+    measure.style.left = `${level}px`;
 };
 
 const minimize = () => {
     size -= 10;
     level -= 10;
-    baloon.style.fontSize = size + 'px';
-    measure.style.left = level + 'px';
+    baloon.style.fontSize = `${size}px`;
+    measure.style.left = `${level}px`;
 };
 
 const boom = () => {
@@ -47,8 +47,8 @@ const clearScore = () => {
     size = 50;
     level = -200;
     baloon.innerHTML = '🎈';
-    measure.style.left = level + 'px';
-    baloon.style.fontSize = size + 'px';
+    baloon.style.fontSize = `${size}px`;
+    measure.style.left = `${level}px`;
     btnStart.innerText = 'Try again';
 };
 
