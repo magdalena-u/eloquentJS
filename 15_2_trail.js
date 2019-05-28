@@ -1,8 +1,3 @@
-const element = '⭐';
-let x = 0;
-let y = 0;
-let array = [];
-
 const mouseMove = event => {
     y = event.clientY;
     x = event.clientX;
@@ -12,50 +7,24 @@ const mouseMove = event => {
 const draw = (x, y) => {
     const star = new Element(x, y);
     star.init();
-    star.update();
-    window.setInterval(remove, 500);
-    removeDiv();
-};
-
-const removeDiv = () => {
-    const divs = document.querySelectorAll('div');
-    if (divs.length >= 20) {
-        divs.forEach(div => div.remove());
-    }
-};
-const remove = () => {
-    array.forEach(item => {
-        const index = array.indexOf(item);
-        array.splice(index, 1);
-    });
-};
-
-const loop = () => {
-    requestAnimationFrame(loop);
-    draw();
 };
 
 class Element {
+    character = '⭐';
+    nodeElement = document.querySelector('div');
     constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.character = element;
     }
 
     init() {
+        const random = Math.floor(Math.random() * 25);
         const div = document.createElement('div');
-        div.innerHTML = element;
+        div.innerHTML = this.character;
+        div.style.left = x + random + 'px';
+        div.style.top = y + random + 'px';
+        div.style.position = 'absolute';
         document.body.appendChild(div);
-        array.push(div);
-    }
-
-    update() {
-        array.forEach(item => {
-            let random = Math.floor(Math.random() * 25);
-            item.style.left = x + random + 'px';
-            item.style.top = y + random + 'px';
-            item.style.position = 'absolute';
-        });
     }
 }
 
