@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <script defer src="15_1_baloon.js"></script>
+        <title>Document</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: center;
+                height: 90vh;
+            }
+
+            .baloon {
+                text-align: center;
+                font-size: 50px;
+                line-height: 300px;
+                height: 300px;
+                width: 300px;
+            }
+            .measure-line {
+                overflow: hidden;
+                position: relative;
+                width: 200px;
+                height: 10px;
+                background-color: grey;
+            }
+
+            .measure {
+                position: absolute;
+                left: -200px;
+                background-color: orangered;
+                width: 200px;
+                height: 10px;
+            }
+
+            .start {
+                font-size: 1.2em;
+                padding: 0.4em;
+                min-width: 100px;
+                background-color: transparent;
+                border: solid grey 2px;
+                border-radius: 20px;
+                outline: none;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Pump it</h1>
+        <h3>Press arrows ⬇️⬆️ to pump baloon</h3>
+        <p class="baloon">🎈</p>
+        <div class="measure-line">
+            <div class="measure"></div>
+        </div>
+        <button class="start">Start</button>
+    </body>
+</html>
