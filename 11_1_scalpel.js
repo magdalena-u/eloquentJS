@@ -342,11 +342,10 @@ async function chicks(nest, year) {
 
 //async function
 async function locateScalpel(nest, current) {
-    let next = await anyStorage(nest, current, 'scalpel');
+    const next = await anyStorage(nest, current, 'scalpel');
     if (next === current) return current;
     else {
-        current = next;
-        return locateScalpel(nest, current);
+        return locateScalpel(nest, next);
     }
 }
 
@@ -355,7 +354,7 @@ function locateScalpel2(nest) {
     function loop(current) {
         return anyStorage(nest, current, 'scalpel').then(next => {
             if (next === current) return current;
-            else return loop(next);
+            return loop(next);
         });
     }
     return loop(nest.name);
