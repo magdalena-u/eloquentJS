@@ -7,6 +7,7 @@ const mouseMove = event => {
 const draw = (x, y) => {
     const star = new Element(x, y);
     star.init();
+    window.setTimeout(star.trash, 500);
 };
 
 class Element {
@@ -25,6 +26,11 @@ class Element {
         div.style.top = y + random + 'px';
         div.style.position = 'absolute';
         document.body.appendChild(div);
+    }
+
+    trash() {
+        const div = document.querySelector('div');
+        div.remove();
     }
 }
 
