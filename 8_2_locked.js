@@ -24,8 +24,8 @@ withBoxUnlocked = callback => {
     box.unlock();
     try {
         callback();
-    } catch (er) {
-        throw er;
+    } catch (error) {
+        throw error;
     } finally {
         box.lock();
     }
