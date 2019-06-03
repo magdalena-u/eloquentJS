@@ -344,9 +344,7 @@ async function chicks(nest, year) {
 async function locateScalpel(nest, current) {
     const next = await anyStorage(nest, current, 'scalpel');
     if (next === current) return current;
-    else {
-        return locateScalpel(nest, next);
-    }
+    return locateScalpel(nest, next);
 }
 
 //same function without async
