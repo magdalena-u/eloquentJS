@@ -1,13 +1,12 @@
 const mouseMove = event => {
-    y = event.clientY;
-    x = event.clientX;
+    const y = event.clientY;
+    const x = event.clientX;
     draw(x, y);
 };
 
 const draw = (x, y) => {
     const star = new Element(x, y);
     star.init();
-    window.setTimeout(star.trash, 500);
 };
 
 class Element {
@@ -20,17 +19,15 @@ class Element {
 
     init() {
         const random = Math.floor(Math.random() * 25);
-        const div = document.createElement('div');
-        div.innerHTML = this.character;
-        div.style.left = x + random + 'px';
-        div.style.top = y + random + 'px';
-        div.style.position = 'absolute';
-        document.body.appendChild(div);
-    }
-
-    trash() {
-        const div = document.querySelector('div');
-        div.remove();
+        this.nodeElement = document.createElement('div');
+        this.nodeElement.innerHTML = this.character;
+        this.nodeElement.style.left = this.x + random + 'px';
+        this.nodeElement.style.top = this.y + random + 'px';
+        this.nodeElement.style.position = 'absolute';
+        document.body.appendChild(this.nodeElement);
+        setTimeout(() => {
+            this.nodeElement.remove();
+        }, 500);
     }
 }
 
