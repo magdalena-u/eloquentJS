@@ -1,19 +1,15 @@
 export function buildGraph(edges) {
-    const graph = Object.create(null);
+    const graph = {};
 
     edges.forEach(edge => {
-        addEdge(graph, edge);
+        const [from, to] = edge;
+
+        if (!graph[from]) {
+            graph[from] = [to];
+        } else {
+            graph[from].push(to);
+        }
     });
 
     return graph;
-}
-
-function addEdge(graph, edge) {
-    const [from, to] = edge;
-
-    if (graph[from] == null) {
-        graph[from] = [to];
-    } else {
-        graph[from].push(to);
-    }
 }
