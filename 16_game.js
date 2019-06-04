@@ -578,37 +578,41 @@ function runLevel(level, Display) {
     return new Promise(resolve => {
         function escKey(event) {
             if (event.keyCode === 27) {
-                if (!pause) {
-                    pause = !pause;
-                    return false;
-                } else if (pause) {
-                    pause = !pause;
-                    return runAnimation(frame);
-                }
+                togglePause();
             }
             return;
         }
 
         window.addEventListener('keydown', escKey);
+
+        function togglePause() {
+            if (!pause) {
+                pause = !pause;
+                return false;
+            }
+            pause = !pause;
+            return runAnimation(frame);
+        }
+
         function frame(time) {
             if (pause) {
                 return;
-            } else {
-                state = state.update(time, arrowKeys);
-                display.syncState(state);
+            }
+            state = state.update(time, arrowKeys);
+            display.syncState(state);
 
-                if (state.status === 'playing') {
-                    return true;
-                } else if (ending > 0) {
-                    ending -= time;
-                    return true;
-                } else {
-                    display.clear();
-                    resolve(state.status);
-                    return false;
-                }
+            if (state.status === 'playing') {
+                return true;
+            } else if (ending > 0) {
+                ending -= time;
+                return true;
+            } else {
+                display.clear();
+                resolve(state.status);
+                return false;
             }
         }
+
         runAnimation(frame);
     });
 }
@@ -621,8 +625,7 @@ async function runGame(plans, Display) {
         if (life > 0) {
             console.log(`you have ${life} lives`);
             let status = await runLevel(new Level(plans[level]), Display);
-            if (status == 'won') level++;
-            else life--;
+            status == 'won' ? level++ : life--;
         } else break;
     }
 
