@@ -1,12 +1,17 @@
 function Promise_all(promises) {
     return new Promise((resolve, reject) => {
         const array = [];
+
         promises.map((promise, index) => {
             promise
+
                 .then(value => {
                     array.push(value);
-                    if (promises.length - 1 === index) resolve(array);
+                    if (promises.length - 1 === index) {
+                        resolve(array);
+                    }
                 })
+
                 .catch(reject);
         });
     });
