@@ -574,16 +574,16 @@ function runLevel(level, Display) {
     let state = State.start(level);
     let ending = 1;
     let pause = false;
+    const escKeyCode = 27;
 
     return new Promise(resolve => {
-        function escKey(event) {
-            if (event.keyCode === 27) {
+        function escKeyHandler(event) {
+            if (event.keyCode === escKeyCode) {
                 togglePause();
             }
-            return;
         }
 
-        window.addEventListener('keydown', escKey);
+        window.addEventListener('keydown', escKeyHandler);
 
         function togglePause() {
             if (!pause) {
