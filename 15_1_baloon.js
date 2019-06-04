@@ -5,17 +5,20 @@ const btnStart = document.querySelector('.start');
 let size = 50;
 let level = -200;
 
+const upArrowKeyCode = 38;
+const downArrowKeyCode = 40;
+
 const playGame = () => {
     clearScore();
     window.addEventListener('keydown', pump);
 };
 
 const pump = event => {
-    if (event.keyCode === 38) {
+    if (event.keyCode === upArrowKeyCode) {
         maximize();
     }
 
-    if (event.keyCode === 40) {
+    if (event.keyCode === downArrowKeyCode) {
         minimize();
     }
 
