@@ -600,6 +600,7 @@ function runLevel(level, Display) {
             if (pause) {
                 return;
             }
+
             state = state.update(time, arrowKeys);
             display.syncState(state);
 
@@ -607,14 +608,16 @@ function runLevel(level, Display) {
 
             if (isPlaying) {
                 return true;
-            } else if (ending > 0) {
+            }
+
+            if (ending > 0) {
                 ending -= time;
                 return true;
-            } else {
-                display.clear();
-                resolve(state.status);
-                return false;
             }
+
+            display.clear();
+            resolve(state.status);
+            return false;
         }
 
         runAnimation(frame);
@@ -633,7 +636,7 @@ async function runGame(plans, Display) {
         } else break;
     }
 
-    (life > 0) ? console.log("You've won!") : console.log("You've lost!");
+    life > 0 ? console.log("You've won!") : console.log("You've lost!");
 }
 
 runGame(GAME_LEVELS, DOMDisplay);
