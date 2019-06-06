@@ -23,7 +23,6 @@ class Element {
         this.nodeElement.innerHTML = this.character;
         this.nodeElement.style.left = `${this.x + random}px`;
         this.nodeElement.style.top = `${this.y + random}px`;
-        this.nodeElement.style.position = 'absolute';
         document.body.appendChild(this.nodeElement);
         setTimeout(() => {
             this.nodeElement.remove();
