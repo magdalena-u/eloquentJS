@@ -570,7 +570,7 @@ function runAnimation(frameFunc) {
 // My solution - Pause
 
 function runLevel(level, Display) {
-    let display = new Display(document.body, level);
+    const display = new Display(document.body, level);
     let state = State.start(level);
     let ending = 1;
     let pause = false;
