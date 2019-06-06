@@ -4,14 +4,12 @@ function Promise_all(promises) {
 
         promises.map((promise, index) => {
             promise
-
                 .then(value => {
                     array.push(value);
                     if (promises.length - 1 === index) {
                         resolve(array);
                     }
                 })
-
                 .catch(reject);
         });
     });
