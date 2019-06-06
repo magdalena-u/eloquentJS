@@ -604,7 +604,7 @@ function runLevel(level, Display) {
             state = state.update(time, arrowKeys);
             display.syncState(state);
 
-            const isPlaying = state.status === 'playing';
+            const isPlaying = state.status === gameStatus.playing;
 
             if (isPlaying) {
                 return true;
@@ -624,6 +624,12 @@ function runLevel(level, Display) {
     });
 }
 
+const gameStatus = {
+    won: 'won',
+    lost: 'lost',
+    playing: 'playing',
+};
+
 //My solution - Game over
 async function runGame(plans, Display) {
     let life = 3;
@@ -632,7 +638,7 @@ async function runGame(plans, Display) {
         if (life > 0) {
             console.log(`you have ${life} lives`);
             let status = await runLevel(new Level(plans[level]), Display);
-            status == 'won' ? level++ : life--;
+            status === gameStatus.won ? level++ : life--;
         } else {
             break;
         }
