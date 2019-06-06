@@ -262,6 +262,7 @@ class Monster {
     constructor(pos, speed) {
         this.pos = pos;
         this.speed = speed;
+        this.size = new Vec(1.2, 0.8);
     }
 
     get type() {
@@ -291,7 +292,6 @@ class Monster {
     }
 }
 
-Monster.prototype.size = new Vec(1.2, 0.8);
 //---------------------------------------------------------
 
 var Lava = class Lava {
