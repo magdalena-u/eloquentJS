@@ -574,23 +574,25 @@ function runLevel(level, Display) {
     let state = State.start(level);
     let ending = 1;
     let pause = false;
-    const escKeyCode = 27;
+    const pauseKeyCode = 27;
 
     return new Promise(resolve => {
-        function escKeyHandler(event) {
-            if (event.keyCode === escKeyCode) {
+        function pauseKeyHandler(event) {
+            if (event.keyCode === pauseKeyCode) {
                 togglePause();
             }
         }
 
-        window.addEventListener('keydown', escKeyHandler);
+        window.addEventListener('keydown', pauseKeyHandler);
 
         function togglePause() {
-            if (!pause) {
-                pause = !pause;
-                return false;
+            const isPaused = pause;
+            pause = !isPaused;
+
+            if (isPaused) {
+                return;
             }
-            pause = !pause;
+
             return runAnimation(frame);
         }
 
@@ -601,7 +603,9 @@ function runLevel(level, Display) {
             state = state.update(time, arrowKeys);
             display.syncState(state);
 
-            if (state.status === 'playing') {
+            const isPlaying = state.status === 'playing';
+
+            if (isPlaying) {
                 return true;
             } else if (ending > 0) {
                 ending -= time;
@@ -629,8 +633,7 @@ async function runGame(plans, Display) {
         } else break;
     }
 
-    if (life > 0) console.log("You've won!");
-    console.log("You've lost!");
+    (life > 0) ? console.log("You've won!") : console.log("You've lost!");
 }
 
 runGame(GAME_LEVELS, DOMDisplay);
