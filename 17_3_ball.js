@@ -1,5 +1,5 @@
 //code from Eloquent JavaScript
-const ctx = document.querySelector('canvas').getContext('2d');
+const canvas = document.querySelector('canvas').getContext('2d');
 
 let lastTime = null;
 function frame(time) {
@@ -20,7 +20,7 @@ let speedY = 50;
 const radius = 20;
 
 function updateAnimation(step) {
-    ctx.clearRect(0, 0, 600, 500);
+    canvas.clearRect(0, 0, 600, 500);
 
     x += step * speedX;
     y += step * speedY;
@@ -33,8 +33,8 @@ function updateAnimation(step) {
         speedY = -speedY;
     }
 
-    ctx.fillStyle = 'red';
-    ctx.beginPath();
-    ctx.arc(x, y, radius, 0, Math.PI * 2, true);
-    ctx.fill();
+    canvas.fillStyle = 'red';
+    canvas.beginPath();
+    canvas.arc(x, y, radius, 0, Math.PI * 2, true);
+    canvas.fill();
 }
