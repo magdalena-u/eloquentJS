@@ -31,15 +31,13 @@ function generateZigZag() {
 
     for (let i = 0; i <= 12; i++) {
         counter += 25;
-        if (i % 2 === 0) {
-            canvas.lineTo(100, counter);
-        } else {
-            canvas.lineTo(50, counter);
-        }
+
+        i % 2 === 0 ? canvas.lineTo(100, counter) : canvas.lineTo(50, counter);
+
         canvas.stroke();
     }
 }
-// generateZigZag();
+generateZigZag();
 
 //Spiral
 
@@ -63,7 +61,7 @@ function generateSpiral() {
     canvas.stroke();
 }
 
-generateSpiral();
+// generateSpiral();
 
 //a yellow star
 
