@@ -23,11 +23,7 @@ for (let result of results) {
     const textX = Math.cos(middleAngle) * 120 + centerX;
     const textY = Math.sin(middleAngle) * 120 + centerY;
 
-    if (middleAngle < 0) {
-        canvas.textAlign = 'left';
-    } else {
-        canvas.textAlign = 'right';
-    }
+    middleAngle < 0 ? (canvas.textAlign = 'left') : (canvas.textAlign = 'right');
 
     canvas.lineTo(centerX, centerY);
     canvas.fillStyle = result.color;
