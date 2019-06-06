@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <script defer src="15_3_tabs.js"></script>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                display: flex;
+                flex-direction: column;
+                width: 80vw;
+                align-items: center;
+            }
+            tab-panel div {
+                display: none;
+            }
+
+            button {
+                font-size: 1.2em;
+                width: 8vw;
+                height: 8vw;
+                border-radius: 50%;
+                border: black solid 3px;
+                margin: 10px;
+                cursor: pointer;
+                outline: none;
+            }
+
+            .show {
+                display: block;
+            }
+
+            .active {
+                background-color: yellowgreen;
+            }
+        </style>
+
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="button-box">
+            <button data-tabname="one">1</button>
+            <button data-tabname="two">2</button>
+            <button data-tabname="three">3</button>
+        </div>
+        <tab-panel>
+            <div data-tabname="one">Tab one</div>
+            <div data-tabname="two">Tab two</div>
+            <div data-tabname="three">Tab three</div>
+        </tab-panel>
+    </body>
+</html>
